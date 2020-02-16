@@ -1,0 +1,51 @@
+package getLast;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        LinkedList list=new LinkedList();
+        System.out.println(list.getLast());
+    }
+}
+
+
+class LinkedList {
+    private class Node {
+        int data;
+        Node next;
+    }
+
+    private Node head;
+    private Node tail;
+    private int size;
+// 0(n)
+    public void display() {
+
+        System.out.println("-----------------------------");
+        Node temp = this.head;
+
+        while (temp != null) {
+            System.out.print(temp.data + ",");
+            temp = temp.next;
+        }
+        System.out.println(".");
+        System.out.println("---------------------------------");
+    }
+// 0(1)
+    public int getFirst()  throws Exception{
+        if (this.size == 0) {
+            throw new Exception("LL is Empty.");
+        }
+        return this.head.data;
+
+    }
+    //0(1)
+    public int getLast()  throws Exception{
+        if (this.size == 0) {
+            throw new Exception("LL is Empty.");
+        }
+        return this.tail.data;
+
+    }
+
+}
