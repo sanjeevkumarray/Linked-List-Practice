@@ -1,0 +1,94 @@
+package addFirst;
+
+public class Main {
+
+    public static void main(String[] args) {
+        LinkedList list=new LinkedList();
+        list.addFirst(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.addFirst(40);
+        list.addFirst(50);
+        list.display();
+
+    }
+}
+
+
+class LinkedList {
+    private class Node {
+        int data;
+        Node next;
+    }
+
+    private Node head;
+    private Node tail;
+    private int size;
+
+    public void display() {
+
+        System.out.println("-----------------------------");
+        Node temp = this.head;
+
+        while (temp != null) {
+            System.out.print(temp.data + ",");
+            temp = temp.next;
+        }
+        System.out.println(".");
+        System.out.println("---------------------------------");
+    }
+
+    public int getFirst(){
+        if(this.size==0){
+            throw new Exception("LL is Empty.");
+        }
+        return this.head.data;
+
+    }
+    public void addLast(int item) {
+        //create a new node
+        Node nn = new Node();
+        nn.data = item;
+        nn.next = null;
+
+        //attach
+        if(this.size >= 1) {
+            this.tail.next = nn;
+        }
+        //summary object
+        if (this.size == 0) {
+            this.head = nn;
+            this.tail = nn;
+            this.size++;
+
+        } else {
+            this.tail = nn;
+            this.size++;
+        }
+    }
+    //add First //
+    public void addFirst(int item){
+
+        // create a new node
+        Node nn= new Node();
+        nn.data=item;
+        nn.next=null;
+
+        //attach
+        if(this.size>=1){
+            nn.next=head;
+
+        }
+        //summary object update
+        if(this.size==0){
+            this.head =nn;
+            this.tail=nn;
+            this.size++;
+        }else{
+       this.head=nn;
+       this.size++;
+
+        }
+    }
+}
+
